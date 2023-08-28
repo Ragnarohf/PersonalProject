@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Générateur de Couleurs d'Arrière-plan</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body id="gradient">
+<h1>Générateur de Couleurs d'Arrière-plan</h1>
+<h2>Choisissez une couleur :</h2>
+
+<!-- Bouton Couleurs Aléatoires -->
+<div class="button-container">
+    <span class="push_button red" id="random">Couleurs Aléatoires</span>
+</div>
+
+<!-- Sélecteur de Couleur 1 -->
+<div class="color-container">
+    <label for="color1">Couleur 1 :</label>
+    <input class="color1" name="color1" type="color" value="#a18cd1">
+</div>
+
+<!-- Sélecteur de Couleur 2 -->
+<div class="color-container">
+    <label for="color2">Couleur 2 :</label>
+    <input class="color2" name="color2" type="color" value="#fbc2eb">
+</div>
+
+<!-- Bouton Inverser Droite/Gauche -->
+<div class="button-container">
+    <span class="push_button blue" id="rotate">Inverser Droite/Gauche</span>
+</div>
+
+<!-- Propriétés CSS à copier -->
+<h3>Propriétés CSS à copier dans votre code (Fond CSS Actuel : <span id="gradient-status"></span>)</h3>
+<button id="copy-css-button">Copier la Propriété CSS</button>
+
+<!-- Script JavaScript -->
+<script src="js/script.js" type="text/javascript"></script>
+</body>
+</html>
