@@ -1,5 +1,4 @@
-# Portfolio de Développeur
-
+# Portfolio de Développeur WIP
 Bienvenue dans mon portfolio de développement ! Ce dépôt contient une collection d'applications et de projets divers qui illustrent mes compétences en tant que développeur. Chaque application est conçue pour mettre en évidence certaines de mes compétences et pour montrer ce que je suis capable de créer.
 
 ## Objectif
@@ -27,8 +26,8 @@ Chaque dossier de projet contient son propre ensemble de fichiers et d'instructi
 Je suis ouvert aux retours, aux suggestions et aux opportunités de collaboration. Si vous avez des questions sur l'un des projets, ou si vous souhaitez en savoir plus sur moi, n'hésitez pas à me contacter :
 
 - Email : votre@email.com
-- LinkedIn : [Votre Nom](https://www.linkedin.com/in/votre-nom/)
-- Site Web : [www.votresiteweb.com](https://www.votresiteweb.com)
+- LinkedIn : [Thoumire Mathieu](https://www.linkedin.com/in/mathieu-thoumire-287834147/)
+
 
 Merci d'avoir visité mon portfolio !
 

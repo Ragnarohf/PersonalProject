@@ -1,7 +1,7 @@
 ROAD MAP(snake)
 
 - Creation de la grille (l'endroit ou l'on draw)
-- Refresh de la grille (pour que le dessions soit pris en compte)
+- Refresh de la grille (pour que le dessins soit pris en compte)
 - Creation de l'objet (on créer un serpent modéle, one le définie par une taille , c'est un peu un protoypte)
 - Dirigez le serpent (on lui donne des methodes pour se dirigez et ses parametres seront fonctions des inputs utilsiateurs)
 - Gestion colission avec le mur et le serpent
@@ -14,8 +14,6 @@ ROAD MAP(snake)
 
 --------------------------------
 - Optimisation du code (let //var etc)
-
-l'enfer je comprend rien 
 
 -----------------------------------
 - on peut styliser un peu le game 
