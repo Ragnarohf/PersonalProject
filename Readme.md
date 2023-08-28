@@ -11,7 +11,7 @@ L'objectif principal de ce portfolio est de présenter de manière concrète et 
 d'éventuels recruteurs et employeurs. Chaque projet présenté reflète ma passion pour la programmation et mon engagement
 constant à évoluer en tant que développeur.
 
-## Projets Inclus (inspirés de tutoriels YouTube et du site d'exercices en développement web [InterviewBit](https://www.interviewbit.com/blog/web-development-projects/))
+## Projets Inclus (inspirés de tutoriels YouTube, de repos GitHub et d'experts du domaine)
 
 - **Projet 1 - OnePageLayoutMCU** : Une page d'accueil classique et responsive centrée sur l'univers cinématographique
   Marvel (MCU). Le contenu est extrait de Wikipédia. Objectif : maîtriser le CSS responsive.
