@@ -1,0 +1,52 @@
+<center>
+  <form name="fil">
+    <table width="50%">
+      <tbody>
+        <tr>
+          <td align="CENTER" bgcolor="#BBCDE1">Longeur du fil</td>
+          <td align="CENTER" bgcolor="#BBCDE1">Diamétre du fil</td>
+          <td align="CENTER" bgcolor="#BBCDE1">Diamétre bobine</td>
+          <td align="CENTER" bgcolor="#BBCDE1">Hauteur bobine</td>
+        </tr>
+        <tr>
+          <td align="center" bgcolor="#BBCDE1">
+            <input type="TEXT" name="long1" value="250000" onchange="maj()" />
+          </td>
+          <td align="center" bgcolor="#BBCDE1">
+            <input type="TEXT" name="diam1" value="0.26" onchange="maj()" />
+          </td>
+          <td align="center" bgcolor="#BBCDE1">
+            <input type="TEXT" name="diam2" value="73" onchange="maj()" />
+          </td>
+          <td align="center" bgcolor="#BBCDE1">
+            <input type="TEXT" name="long2" value="37" onchange="maj()" />
+          </td>
+        </tr>
+        <tr>
+          <td align="center" bgcolor="#BBCDE1" colspan="4">
+            La largeur du réducteur ne devrait pas être loin de<br /><input
+              type="TEXT"
+              name="long3"
+            /><br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</center>
+<script language="javascript">
+  function maj() {
+    var long1 = parseFloat(document.forms["fil"].elements["long1"].value);
+    var diam1 = parseFloat(document.forms["fil"].elements["diam1"].value);
+    var long2 = parseFloat(document.forms["fil"].elements["long2"].value);
+    var diam2 = parseFloat(document.forms["fil"].elements["diam2"].value);
+    var long3 = volume(long1, diam1, diam2, long2);
+    document.forms["fil"].elements["long3"].value = long3;
+  }
+  function volume(long1, diam1, diam2, long2) {
+    var vol1 = (long2 * (diam2 * diam2) - long1 * (diam1 * diam1)) / long2;
+    var long3 = Math.sqrt(vol1 * 1);
+    console.log(long3);
+    return long3.toFixed(2);
+  }
+</script>
