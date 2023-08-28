@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau Éditable</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin: auto;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    td {
+      background-color: #ffffff;
+    }
+    td[contenteditable="true"]:focus {
+      outline: 1px solid #2196F3;
+    }
+  </style>
+</head>
+<body>
+<h1>Tableau Éditable avec utilisation de la balise  html "contenteditable"</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Colonne 1</th>
+    <th>Colonne 2</th>
+    <th>Colonne 3</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td contenteditable="true">Donnée 1</td>
+    <td contenteditable="true">Donnée 2</td>
+    <td contenteditable="true">Donnée 3</td>
+  </tr>
+  <tr>
+    <td contenteditable="true">Donnée 4</td>
+    <td contenteditable="true">Donnée 5</td>
+    <td contenteditable="true">Donnée 6</td>
+  </tr>
+  <tr>
+    <td contenteditable="true">Donnée 7</td>
+    <td contenteditable="true">Donnée 8</td>
+    <td contenteditable="true">Donnée 9</td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
