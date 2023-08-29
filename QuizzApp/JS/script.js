@@ -6,6 +6,9 @@ const elements = {
   answerButtons: document.getElementById("answer-buttons"),
   score: document.getElementById("score"),
   scoreValue: document.getElementById("score-value"),
+  scoreScreen: document.getElementById("score-screen"),
+  finalScore: document.getElementById("final-score"),
+  restartButton: document.getElementById("restart-btn"),
 };
 
 const questions = [
@@ -132,11 +135,7 @@ function clearStatusClass(element) {
 }
 
 function showFinalScore() {
-  elements.question.innerText = "Quiz terminé!";
-  elements.scoreValue.innerText = `${score} / ${totalQuestions}`;
-  elements.scoreValue.style.fontSize = "2rem";
-  elements.score.innerText = `Score final: ${score} / ${totalQuestions}`;
-  elements.nextButton.classList.add("hide");
-  elements.startButton.innerText = "Recommencer";
-  elements.startButton.classList.remove("hide");
+  elements.questionContainer.classList.add("hide");
+  elements.scoreScreen.classList.remove("hide");
+  elements.finalScore.innerText = `${score} / ${totalQuestions}`;
 }
