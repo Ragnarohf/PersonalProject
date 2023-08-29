@@ -1,0 +1,70 @@
+[
+  {
+    "question": "Combien vaut l'opération 2+2 ?",
+    "answers": [
+      {
+        "text": "4",
+        "correct": true
+      },
+      {
+        "text": "22",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Combien y a-t-il de pierres d'infinité dans le MCU ?",
+    "answers": [
+      {
+        "text": "6",
+        "correct": true
+      },
+      {
+        "text": "8",
+        "correct": false
+      },
+      {
+        "text": "10",
+        "correct": false
+      },
+      {
+        "text": "12",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le développement web est-il amusant ?",
+    "answers": [
+      {
+        "text": "Un peu",
+        "correct": false
+      },
+      {
+        "text": "OUI !!!",
+        "correct": true
+      },
+      {
+        "text": "Euh non",
+        "correct": false
+      },
+      {
+        "text": "ne se prononce pas",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Combien vaut l'opération 4 * 2 ?",
+    "answers": [
+      {
+        "text": "6",
+        "correct": false
+      },
+      {
+        "text": "8",
+        "correct": true
+      }
+    ]
+  }
+]

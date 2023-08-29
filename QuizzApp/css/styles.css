@@ -84,3 +84,24 @@ body.wrong {
 .hide {
     display: none;
 }
+
+#score-screen {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.final-score {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.restart-btn {
+    font-size: 1rem;
+    padding: 8px 20px;
+}
+
+#score-screen {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}

@@ -4,84 +4,65 @@ const elements = {
   questionContainer: document.getElementById("question-container"),
   question: document.getElementById("question"),
   answerButtons: document.getElementById("answer-buttons"),
-  score: document.getElementById("score"),
   scoreValue: document.getElementById("score-value"),
   scoreScreen: document.getElementById("score-screen"),
   finalScore: document.getElementById("final-score"),
-  restartButton: document.getElementById("restart-btn"),
 };
 
-const questions = [
-  {
-    question: "Combien vaut l'opération 2+2 ?",
-    answers: [
-      { text: "4", correct: true },
-      { text: "22", correct: false },
-    ],
-  },
-  {
-    question: "Combien y a-t-il de pierres d'infinité dans le MCU ?",
-    answers: [
-      { text: "6", correct: true },
-      { text: "8", correct: false },
-      { text: "10", correct: false },
-      { text: "12", correct: false },
-    ],
-  },
-  {
-    question: "Le développement web est-il amusant ?",
-    answers: [
-      { text: "Un peu", correct: false },
-      { text: "OUI !!!", correct: true },
-      { text: "Euh non", correct: false },
-      { text: "ne se prononce pas", correct: false },
-    ],
-  },
-  {
-    question: "Combien vaut l'opération 4 * 2 ?",
-    answers: [
-      { text: "6", correct: false },
-      { text: "8", correct: true },
-    ],
-  },
-];
-
-let totalQuestions = questions.length;
-let shuffledQuestions, currentQuestionIndex;
-let score = 0;
+let totalQuestions,
+  shuffledQuestions,
+  currentQuestionIndex,
+  score = 0;
 
 elements.startButton.addEventListener("click", startGame);
+
+function startGame() {
+  elements.startButton.classList.add("hide");
+  fetchQuestionsFromJSON();
+}
+
+function fetchQuestionsFromJSON() {
+  fetch("questions.json")
+    .then((response) => response.json())
+    .then((data) => {
+      totalQuestions = data.length;
+      shuffledQuestions = data.sort(() => Math.random() - 0.5);
+      currentQuestionIndex = 0;
+      score = 0;
+      updateScore();
+      elements.questionContainer.classList.remove("hide");
+      setNextQuestion();
+    })
+    .catch((error) => {
+      console.error(
+        "Une erreur s'est produite lors du chargement des questions :",
+        error
+      );
+    });
+}
+
 elements.nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
-  setNextQuestion();
+  if (currentQuestionIndex < shuffledQuestions.length) {
+    setNextQuestion();
+  } else {
+    showFinalScore();
+  }
 });
 
 function updateScore() {
   elements.scoreValue.innerText = `${score} / ${totalQuestions}`;
 }
 
-function startGame() {
-  elements.startButton.classList.add("hide");
-  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-  currentQuestionIndex = 0;
-  score = 0;
-  updateScore();
-  elements.questionContainer.classList.remove("hide");
-  setNextQuestion();
-}
-
 function setNextQuestion() {
   resetState();
-  if (currentQuestionIndex < shuffledQuestions.length) {
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
-  } else {
-    showFinalScore();
-  }
+  showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
 function showQuestion(question) {
   elements.question.innerText = question.question;
-  question.answers.forEach((answer, index) => {
+  elements.answerButtons.innerHTML = ""; // Clear previous answers
+  question.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.innerText = answer.text;
     button.classList.add("btn");
@@ -96,9 +77,6 @@ function showQuestion(question) {
 function resetState() {
   clearStatusClass(document.body);
   elements.nextButton.classList.add("hide");
-  while (elements.answerButtons.firstChild) {
-    elements.answerButtons.removeChild(elements.answerButtons.firstChild);
-  }
 }
 
 function selectAnswer(e) {
@@ -136,6 +114,9 @@ function clearStatusClass(element) {
 
 function showFinalScore() {
   elements.questionContainer.classList.add("hide");
+  elements.answerButtons.classList.add("hide");
+  elements.nextButton.classList.add("hide");
+  elements.startButton.classList.add("hide");
   elements.scoreScreen.classList.remove("hide");
-  elements.finalScore.innerText = `${score} / ${totalQuestions}`;
+  elements.finalScore.innerText = `Votre score final : ${score} / ${totalQuestions}`;
 }
