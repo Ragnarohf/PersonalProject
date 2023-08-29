@@ -7,6 +7,28 @@ document.addEventListener("DOMContentLoaded", () => {
     return num.toFixed(2);
   };
 
+  const checkAbsoluteZero = (kelvinTemp) => {
+    if (kelvinTemp === 0) {
+      return "Vous êtes au zéro absolu !";
+    } else {
+      return "";
+    }
+  };
+
+  const updateResults = (celsiusTemp, fahrenheitTemp, kelvinTemp) => {
+    const celsiusResult = roundToTwoDP(celsiusTemp) + " °C";
+    const fahrenheitResult = roundToTwoDP(fahrenheitTemp) + " °F";
+    const kelvinResult = roundToTwoDP(kelvinTemp) + " K";
+
+    document.getElementById("celsius-result").textContent = celsiusResult;
+    document.getElementById("fahrenheit-result").textContent = fahrenheitResult;
+    document.getElementById("kelvin-result").textContent = kelvinResult;
+
+    const absoluteZeroMessage = checkAbsoluteZero(kelvinTemp);
+    document.getElementById("absolute-zero-message").textContent =
+      absoluteZeroMessage;
+  };
+
   const celsiusToFaAndKe = () => {
     const celsiusTemp = parseFloat(celsiusInput.value);
     const fahrenheitTemp = celsiusTemp * 1.8 + 32;
@@ -14,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fahrenheitInput.value = roundToTwoDP(fahrenheitTemp);
     kelvinInput.value = roundToTwoDP(kelvinTemp);
+
+    updateResults(celsiusTemp, fahrenheitTemp, kelvinTemp);
   };
 
   const fahrenheitToCeAndKe = () => {
@@ -23,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     celsiusInput.value = roundToTwoDP(celsiusTemp);
     kelvinInput.value = roundToTwoDP(kelvinTemp);
+
+    updateResults(celsiusTemp, fahrenheitTemp, kelvinTemp);
   };
 
   const kelvinToCeAndFa = () => {
@@ -32,9 +58,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     celsiusInput.value = roundToTwoDP(celsiusTemp);
     fahrenheitInput.value = roundToTwoDP(fahrenheitTemp);
+
+    updateResults(celsiusTemp, fahrenheitTemp, kelvinTemp);
   };
 
-  celsiusInput.addEventListener("input", celsiusToFaAndKe);
-  fahrenheitInput.addEventListener("input", fahrenheitToCeAndKe);
-  kelvinInput.addEventListener("input", kelvinToCeAndFa);
+  celsiusInput.addEventListener("input", () => {
+    celsiusToFaAndKe();
+  });
+
+  fahrenheitInput.addEventListener("input", () => {
+    fahrenheitToCeAndKe();
+  });
+
+  kelvinInput.addEventListener("input", () => {
+    kelvinToCeAndFa();
+  });
+
+  updateResults(0, 0, 0);
 });
