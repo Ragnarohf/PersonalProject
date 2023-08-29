@@ -1,80 +1,12 @@
-const startButton = document.getElementById("start-btn");
-const nextButton = document.getElementById("next-btn");
-const questionContainerElement = document.getElementById("question-container");
-const questionElement = document.getElementById("question");
-const answerButtonsElement = document.getElementById("answer-buttons");
-
-let shuffledQuestions, currentQuestionIndex;
-
-startButton.addEventListener("click", startGame);
-nextButton.addEventListener("click", () => {
-  currentQuestionIndex++;
-  setNextQuestion();
-});
-
-function startGame() {
-  startButton.classList.add("hide");
-  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-  currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hide");
-  setNextQuestion();
-}
-
-function setNextQuestion() {
-  resetState();
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
-}
-
-function showQuestion(question) {
-  questionElement.innerText = question.question;
-  question.answers.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerText = answer.text;
-    button.classList.add("btn");
-    if (answer.correct) {
-      button.dataset.correct = answer.correct;
-    }
-    button.addEventListener("click", selectAnswer);
-    answerButtonsElement.appendChild(button);
-  });
-}
-
-function resetState() {
-  clearStatusClass(document.body);
-  nextButton.classList.add("hide");
-  while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-  }
-}
-
-function selectAnswer(e) {
-  const selectedButton = e.target;
-  const correct = selectedButton.dataset.correct;
-  setStatusClass(document.body, correct);
-  Array.from(answerButtonsElement.children).forEach((button) => {
-    setStatusClass(button, button.dataset.correct);
-  });
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove("hide");
-  } else {
-    startButton.innerText = "Recommencer";
-    startButton.classList.remove("hide");
-  }
-}
-
-function setStatusClass(element, correct) {
-  clearStatusClass(element);
-  if (correct) {
-    element.classList.add("correct");
-  } else {
-    element.classList.add("wrong");
-  }
-}
-
-function clearStatusClass(element) {
-  element.classList.remove("correct");
-  element.classList.remove("wrong");
-}
+const elements = {
+  startButton: document.getElementById("start-btn"),
+  nextButton: document.getElementById("next-btn"),
+  questionContainer: document.getElementById("question-container"),
+  question: document.getElementById("question"),
+  answerButtons: document.getElementById("answer-buttons"),
+  score: document.getElementById("score"),
+  scoreValue: document.getElementById("score-value"),
+};
 
 const questions = [
   {
@@ -110,3 +42,101 @@ const questions = [
     ],
   },
 ];
+
+let totalQuestions = questions.length;
+let shuffledQuestions, currentQuestionIndex;
+let score = 0;
+
+elements.startButton.addEventListener("click", startGame);
+elements.nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+  setNextQuestion();
+});
+
+function updateScore() {
+  elements.scoreValue.innerText = `${score} / ${totalQuestions}`;
+}
+
+function startGame() {
+  elements.startButton.classList.add("hide");
+  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  currentQuestionIndex = 0;
+  score = 0;
+  updateScore();
+  elements.questionContainer.classList.remove("hide");
+  setNextQuestion();
+}
+
+function setNextQuestion() {
+  resetState();
+  if (currentQuestionIndex < shuffledQuestions.length) {
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+  } else {
+    showFinalScore();
+  }
+}
+
+function showQuestion(question) {
+  elements.question.innerText = question.question;
+  question.answers.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.innerText = answer.text;
+    button.classList.add("btn");
+    if (answer.correct) {
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener("click", selectAnswer);
+    elements.answerButtons.appendChild(button);
+  });
+}
+
+function resetState() {
+  clearStatusClass(document.body);
+  elements.nextButton.classList.add("hide");
+  while (elements.answerButtons.firstChild) {
+    elements.answerButtons.removeChild(elements.answerButtons.firstChild);
+  }
+}
+
+function selectAnswer(e) {
+  const selectedButton = e.target;
+  const correct = selectedButton.dataset.correct;
+  if (correct) {
+    score++;
+  }
+  setStatusClass(document.body, correct);
+  Array.from(elements.answerButtons.children).forEach((button) => {
+    setStatusClass(button, button.dataset.correct);
+  });
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    elements.nextButton.classList.remove("hide");
+  } else {
+    elements.startButton.innerText = "Recommencer";
+    elements.startButton.classList.remove("hide");
+  }
+  updateScore();
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove("correct");
+  element.classList.remove("wrong");
+}
+
+function showFinalScore() {
+  elements.question.innerText = "Quiz terminé!";
+  elements.scoreValue.innerText = `${score} / ${totalQuestions}`;
+  elements.scoreValue.style.fontSize = "2rem";
+  elements.score.innerText = `Score final: ${score} / ${totalQuestions}`;
+  elements.nextButton.classList.add("hide");
+  elements.startButton.innerText = "Recommencer";
+  elements.startButton.classList.remove("hide");
+}

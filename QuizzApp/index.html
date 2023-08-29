@@ -5,24 +5,22 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <link href="css/styles.css" rel="stylesheet">
-    <script defer src="JS/script.js"></script>
     <title>Quiz AppJS</title>
 </head>
 <body>
 <div class="container">
     <div class="hide" id="question-container">
-        <div id="question">Questions</div>
+        <div id="question">Question</div>
         <div class="btn-grid" id="answer-buttons">
-            <button class="btn">Réponse 1</button>
-            <button class="btn">Réponse 2</button>
-            <button class="btn">Réponse 3</button>
-            <button class="btn">Réponse 4</button>
+
         </div>
     </div>
     <div class="controls">
         <button class="start-btn btn" id="start-btn">Démarrer</button>
         <button class="next-btn btn hide" id="next-btn">Suivant</button>
     </div>
+    <p id="score">Score: <span id="score-value"></span></p>
 </div>
+<script defer src="JS/script.js"></script>
 </body>
 </html>
