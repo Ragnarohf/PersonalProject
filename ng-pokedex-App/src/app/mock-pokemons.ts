@@ -113,7 +113,7 @@ export const POKEMONS: Pokemon[] = [
   },
   {
     id: 12,
-    name: "Groupix",
+    name: "Goupix",
     hp: 17,
     cp: 8,
     picture:
