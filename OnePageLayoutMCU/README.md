@@ -15,7 +15,7 @@ Cette page d'hommage est conçue pour mettre en pratique les concepts suivants :
 ## Fonctionnalités
 
 - Présentation d'une personnalité notable, avec des informations pertinentes.
-- Utilisation de balises sémantiques telles que `<header>`, `<main>`, `<section>`, , etc.
+- Utilisation de balises sémantiques telles que `<header>`, `<script>`, `<section>`, , etc.
 - Mise en page responsive pour une expérience utilisateur optimale sur différentes tailles d'écran.
 
 ## Aperçu
