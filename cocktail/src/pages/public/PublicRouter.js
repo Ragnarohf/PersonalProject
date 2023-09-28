@@ -6,7 +6,7 @@ import Service from "./Service";
 import Contact from "./Contact";
 import Error from "../../_utils/Error";
 
-const PublicRoute = () => {
+const PublicRouter = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
@@ -22,4 +22,4 @@ const PublicRoute = () => {
   );
 };
 
-export default PublicRoute;
+export default PublicRouter;
