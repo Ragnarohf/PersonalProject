@@ -1,5 +1,5 @@
-import Axios from './caller.service'
-import jwt_decode from 'jwt-decode'
+import Axios from "./caller.service";
+import jwt_decode from "jwt-decode";
 
 /**
  * Connexion vers l'API
@@ -43,7 +43,7 @@ let getToken = () => {
 };
 
 /**
- * Récupération du payload du tkoen
+ * Récupération du payload du token
  * @returns {object}
  */
 let getTokenInfo = () => {
