@@ -6,7 +6,6 @@ const User = () => {
   const [users, setUsers] = useState([]);
   const flag = useRef(false);
 
-  // Récupération de la liste des utilisateurs à l'affichage
   useEffect(() => {
     if (flag.current === false) {
       userService
@@ -20,7 +19,6 @@ const User = () => {
     return () => (flag.current = true);
   }, []);
 
-  // Gestion du bouton de suppression d'un utilisateur
   const delUser = (userId) => {
     userService
       .deleteUser(userId)

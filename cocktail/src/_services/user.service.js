@@ -1,7 +1,7 @@
 import Axios from "./caller.service";
 import axios from "axios";
 
-let getAllUser = () => {
+let getAllUsers = () => {
   return Axios.get("/users");
 };
 let getUser = (uid) => {
@@ -9,6 +9,6 @@ let getUser = (uid) => {
 };
 
 export const userService = {
-  getAllUser,
+  getAllUsers,
   getUser,
 };
