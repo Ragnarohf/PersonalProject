@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./auth.css";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 import { accountService } from "../../_services/account.service";
 
@@ -18,11 +18,9 @@ const Login = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(credentials);
-    axios
-      .post("https//localhost:8888/auth/login", credentials)
+    accountService
+      .login(credentials)
       .then((res) => {
-        console.log(res);
         accountService.saveToken(res.data.access_token);
         navigate("/admin");
       })
