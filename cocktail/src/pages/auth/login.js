@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import "./auth.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { accountService } from "../../_services/account.service";
 
 const Login = () => {
+  let navigate = useNavigate();
   const [credentials, setCredentials] = useState({
-    login: "",
+    email: "",
     password: "",
   });
   const onChange = (e) => {
@@ -15,6 +19,14 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(credentials);
+    axios
+      .post("https//localhost:8888/auth/login", credentials)
+      .then((res) => {
+        console.log(res);
+        accountService.saveToken(res.data.access_token);
+        navigate("/admin");
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="Login">
@@ -23,7 +35,7 @@ const Login = () => {
           <label htmlFor="login"> Identifiant</label>
           <input
             type="text"
-            name="login"
+            name="email"
             value={credentials.login}
             onChange={onChange}
           />
