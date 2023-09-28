@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const User = () => {
   let navigate = useNavigate();
+
+  useEffect(() => {}, []);
   const rayan = (userId) => {
     console.log("click");
     navigate("../edit/" + userId);
