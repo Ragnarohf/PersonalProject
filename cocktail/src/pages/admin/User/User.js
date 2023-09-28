@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { userService } from "../../../_services/user.service";
+import { userService } from "../../../_services";
 
 const User = () => {
   const [users, setUsers] = useState([]);
@@ -23,7 +23,6 @@ const User = () => {
     userService
       .deleteUser(userId)
       .then((res) => {
-        // Mise à jour du state pour affichage
         setUsers((current) => current.filter((user) => user.id !== userId));
       })
       .catch((err) => console.log(err));

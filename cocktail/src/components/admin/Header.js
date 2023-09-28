@@ -1,5 +1,5 @@
 import React from "react";
-import { accountService } from "../../_services/account.service";
+import { accountService } from "../../_services";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
