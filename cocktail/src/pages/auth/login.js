@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import "./auth.css";
 
 const Login = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    login: "",
+    password: "",
+  });
+  const onChange = (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    });
+  };
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("formulaire");
-    console.log(login, password);
+    console.log(credentials);
   };
   return (
     <div className="Login">
@@ -17,8 +24,8 @@ const Login = () => {
           <input
             type="text"
             name="login"
-            value={login}
-            onChange={(e) => setLogin(e.target.value)}
+            value={credentials.login}
+            onChange={onChange}
           />
         </div>
         <div className="group">
@@ -26,8 +33,8 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={credentials.password}
+            onChange={onChange}
           />
         </div>
 
