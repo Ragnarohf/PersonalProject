@@ -17,6 +17,11 @@
 /*    text-decoration: none;*/
 /*    color: black;*/
 /*}*/
+header {
+    text-align: center;
+    border-bottom: 1px solid blue;
+}
+
 ul {
     list-style: none;
     padding: 0px;

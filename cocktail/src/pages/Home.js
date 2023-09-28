@@ -4,7 +4,8 @@ import Header from "../components/public/header";
 const Home = () => {
   return (
     <div>
-      <Header /> Home here !
+      <Header />
+      Home here !
     </div>
   );
 };
